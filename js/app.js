@@ -64,24 +64,6 @@ $(document).ready(function() {
 	var pantry = new ListOfAllIngredients(data.ingredients);
 	console.log(pantry.ingredients);
 	console.log(pantry.allofTheIngredients(data.ingredients));
-
-	
-
-	
-	// var ingredients = function(ingredient) {
-	// 	this.ingredient = ingredient;
-	// };
-
-
-
-	// pantry.prototype.ingredients = function(length) {
-	// 	var ingredients = "";
-	// 	for (var i = 0; i < length; i++) {
-	// 		ingredients += this.ingredients[i % this.ingredients.length] + " ";
-	// 	}
-	// 	console.log(solo);
-	// };
-
 });
 
 

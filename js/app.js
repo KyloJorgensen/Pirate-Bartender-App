@@ -32,6 +32,36 @@ $(document).ready(function() {
 	console.log(pantry.ingredients);
 	console.log(pantry.allofTheIngredients(data.ingredients));
  
+	// listens for user to push a button then checks what they pushed
+	$('li').on('click', 'button', function() {
+		validateInput($(this).html());
+	});
+
+	// determines what the user has pushed
+	function validateInput(input) {
+		if (input == 'No') {
+			$('ul').empty();
+			$('.question').text('Good luck bucko')
+		} else {
+			nextQuestion(input);
+		}
+	};
+
+	function nextQuestion(input) {
+		var currentQuestion = determineCurrentQuestion(input);
+		console.log(currentQuestion);
+	}
+
+	function determineCurrentQuestion(input) {
+		for (var i = 0; i < data.questions.length; i++) {
+			if (data.questions[i] == input) {
+				return i;
+			} else {
+				return 0;
+			}
+		}
+	}
+
 });
 
 

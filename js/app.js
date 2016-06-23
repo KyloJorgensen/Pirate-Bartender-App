@@ -40,7 +40,7 @@ $(document).ready(function() {
 	// determines what the user has pushed
 	function validateInput(input) {
 		if (input == 'No') {
-			$('ul').empty();
+			$('.chocies').empty();
 			$('.question').text('Good luck bucko')
 		} else {
 			nextQuestion(input);
@@ -48,18 +48,32 @@ $(document).ready(function() {
 	};
 
 	function nextQuestion(input) {
-		var currentQuestion = determineCurrentQuestion(input);
+		var currentQuestion = determineCurrentQuestion($('.question').html());
 		console.log(currentQuestion);
+		if (currentQuestion < data.questions.length) {
+			generateQuestion(currentQuestion);
+		} else {
+
+		}
 	}
 
 	function determineCurrentQuestion(input) {
 		for (var i = 0; i < data.questions.length; i++) {
 			if (data.questions[i] == input) {
+				console.log(data.questions[i]);
 				return i;
-			} else {
-				return 0;
 			}
 		}
+		console.log('no match')
+		return 0;
+	}
+
+	function generateQuestion(currentQuestion) {
+		$('.question').text(data.questions[currentQuestion]);
+		$('.chocies').empty();
+		$.each(data.ingredients[currentQuestion], function(index, value) {
+			$('.chocies').append('<li><button>' + value + '</button></li>');
+		});
 	}
 
 });

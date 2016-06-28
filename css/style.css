@@ -1,8 +1,32 @@
+main {
+	width: 1200px;
+	margin: 0 auto;
+}
+
 ul {
 	list-style: none;
 }
 
+li {
+	font-size: 2rem;
+}
+
+li h1,
+li i {
+	display: inline-block;
+}
+
+h1 {
+	font-size: 2rem;
+}
+
+i {
+	padding-left: 10px;
+}
+
+
 button {
 	width: 100%;
 	margin-top: 10px;
+	font-size: 3rem;
 }

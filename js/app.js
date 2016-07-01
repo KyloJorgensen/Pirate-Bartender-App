@@ -1,5 +1,5 @@
+"use strict";
 $(document).ready(function() {
-	"use strict";
 
 	$('body').on('click', '.fa-square-o', function() {
 		$(this).removeClass('fa-square-o').addClass('fa-check-square-o');
@@ -33,7 +33,7 @@ $(document).ready(function() {
 
 	Cook.prototype.generateQuestions = function() {
 		$('.questions').empty();
-		questions = this.questions;
+		var questions = this.questions;
 		for (var i = 0; i < questions.length; i++) {
 			$('.questions').append('<li><h1>' + questions[i].question + '</h1><i class="fa fa-check-square-o" aria-hidden="true"></i></li>');	
 		};
@@ -42,14 +42,13 @@ $(document).ready(function() {
 
 	Cook.prototype.createOrder = function() {
 		var ingredients = [],
-		order = '';
+		order = '',
 		questions = this.questions;
 		
 		$('.fa-check-square-o').each(function() {
 			for (var i = 0; i < questions.length; i++) {
 				if (questions[i].question == $(this).parent().children('h1').html()) {
 					var ingredient = new Ingredient(questions[i]);
-					ingredient.prototype = Ingredient.prototype;
 					ingredient.randomIngredient();
 					ingredients.push(ingredient.ingredient);
 				}
@@ -98,22 +97,19 @@ $(document).ready(function() {
 		Cook.call(this, data, name, type);
 	};
 	Bartender.prototype = Object.create(Cook.prototype);
-	Bartender.prototype.constructor = Bartender;
+	// Bartender.prototype.constructor = Bartender;
 
 	var Chef = function(data, name, type) {
 		Cook.call(this, data, name, type);
 	};
 
 	Chef.prototype = Object.create(Cook.prototype);
-	Chef.prototype.constructor = Chef;
 
 
 	var ben = new Bartender(data.bartender, 'ben', 'drink');
-	
+	console.log(ben.constructor);
 	var steven = new Cook(data.chef, 'steven', 'burger');
 
-
-	// Constructor object for list of all of the ingredients
 	var Pantry = function(data) {
 		var pantry = [];
 		$.each(data, function(index, value) {
